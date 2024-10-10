@@ -27,7 +27,9 @@ def test_nome_vazio_do_engenheiro():
                             Endereco("Rua A", "788", "casa", "4111", "Salvador", UnidadeFederativa.BAHIA.sigla), 7000, Sexo.MASCULINO, "111")
 
 def test_telefone_vazio():
-    with pystest.raises
+    with pytest.raises(TypeError, match = "O numero não pode ser vazio"):
+        Engenheiro("Silvestre", "", "silvestre.ferreira@gmail.com",
+                            Endereco("Rua A", "788", "casa", "4111", "Salvador", UnidadeFederativa.BAHIA.sigla), 7000, Sexo.MASCULINO, "111")
 
 def test_email_engenheiro():
     with pytest.raises(TypeError,match = "O email deve conter o @ e mail.com"):

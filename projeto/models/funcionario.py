@@ -22,7 +22,7 @@ class Funcionario(ABC):
         return email
     
     def _telefone_vazio(self, telefone):
-        if not telefone.stip():
+        if not telefone.strip():
             raise TypeError("O numero não pode ser vazio")
         return telefone
     

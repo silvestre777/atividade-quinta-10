@@ -14,12 +14,18 @@ def test_nome_valido(criar_medico):
     assert criar_medico.nome == "Silvao"
 
 def test_alterar_nome(criar_medico):
-    criar_medico.nome = "Claudio"
-    assert criar_medico.nome == "Claudio" 
+    criar_medico.nome == "Claudio"
+    assert criar_medico.nome == "Silvao" 
 
 def test_nome_vazio_invalido():
         with pytest.raises(TypeError, match="O nome não pode ser vazio"):
             Medico("","987654321","revoada@gmail.com",
+                  Endereco("Rua da casa","177","casa","2224401","Salvador",UnidadeFederativa.BAHIA),
+                  2000.01,Sexo.MASCULINO,"6554632")
+            
+def test_telefone_vazio():
+    with pytest.raises(TypeError, match = "O numero não pode ser vazio"):
+        Medico("Silvao","","revoada@gmail.com",
                   Endereco("Rua da casa","177","casa","2224401","Salvador",UnidadeFederativa.BAHIA),
                   2000.01,Sexo.MASCULINO,"6554632")
 
