@@ -6,7 +6,7 @@ from projeto.models.enum.sexo import Sexo
 class Funcionario(ABC):
     def __init__(self,nome: str, telefone: str, email: str, endereco: Endereco, salario_final: float, sexo: Sexo) -> None:
         self.nome = self._nome_vazio(nome)
-        self.telefone = telefone
+        self.telefone = self._telefone_vazio(telefone)
         self.email = self._email_invalido(email)
         self.endereco = endereco
         self.salario_final = salario_final
@@ -20,6 +20,11 @@ class Funcionario(ABC):
         if "@" and "mail.com" not in email:
             raise TypeError("O email deve conter o @ e mail.com")
         return email
+    
+    def _telefone_vazio(self, telefone):
+        if not telefone.stip():
+            raise TypeError("O numero não pode ser vazio")
+        return telefone
     
     def _nome_vazio(self,nome):
         if not nome.strip():
